@@ -28,39 +28,34 @@ public class ImcActivity extends AppCompatActivity {
         editTextWeight = findViewById(R.id.edit_imc_weight);
         btnCalc = findViewById(R.id.btn_calc);
 
-        btnCalc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!validateForm()) { // Verifica se o preenchimento dos campos é válido.
-                    // Exibe uma mensagem de erro de validação.
-                    Toast.makeText(ImcActivity.this, R.string.fields_invalidation_form, Toast.LENGTH_LONG).show();
-                    return; // Interrompe a continuidade da execução do código.
-                }
+        btnCalc.setOnClickListener(v -> {
+            if(!validateForm()) { // Verifica se o preenchimento dos campos é válido.
+                // Exibe uma mensagem de erro de validação.
+                Toast.makeText(ImcActivity.this, R.string.fields_invalidation_form, Toast.LENGTH_LONG).show();
+                return; // Interrompe a continuidade da execução do código.
+            }
 
-                int height = Integer.parseInt(editTextHeight.getText().toString());
-                int weight = Integer.parseInt(editTextWeight.getText().toString());
+            int height = Integer.parseInt(editTextHeight.getText().toString());
+            int weight = Integer.parseInt(editTextWeight.getText().toString());
 
-                double imcResult = calculate(height, weight); // Retornando o valor do IMC.
-                int imcResponseId = imcResponse(imcResult); // Retornado o valor do item do arquivo de recurso.
+            double imcResult = calculate(height, weight); // Retornando o valor do IMC.
+            int imcResponseId = imcResponse(imcResult); // Retornado o valor do item do arquivo de recurso.
 
 //                Toast.makeText(ImcActivity.this, imcResponseId, Toast.LENGTH_LONG).show(); // Exibindo a mensagem com o IMC e a descrição.
 
-                AlertDialog dialog = new AlertDialog.Builder(ImcActivity.this)
-                        .setTitle(getString(R.string.imc_response, imcResult)) // Criando o título da caixa e usando o método getString para mudar dinâmicamente o valor no arquivo de recursos.
-                        .setMessage(imcResponseId) // Criando a mensagem usando como argumento o valor do item do arquivo de recurso.
-                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() { // Criando um botão de ok com o arquivo de recurso do android e implemendo um ouvinte de clique.
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
+            // Criando um botão de ok com o arquivo de recurso do android e implemendo um ouvinte de clique.
+            AlertDialog dialog = new AlertDialog.Builder(ImcActivity.this)
+                    .setTitle(getString(R.string.imc_response, imcResult)) // Criando o título da caixa e usando o método getString para mudar dinâmicamente o valor no arquivo de recursos.
+                    .setMessage(imcResponseId) // Criando a mensagem usando como argumento o valor do item do arquivo de recurso.
+                    .setPositiveButton(android.R.string.ok, (dialog1, which) -> {
 
-                            }
-                        })
-                        .create();
+                    })
+                    .create();
 
-                dialog.show();
+            dialog.show();
 
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE); // Definindo um objeto gerenciador do teclado para manipular recursos de serviços.
-                inputMethodManager.hideSoftInputFromWindow(editTextHeight.getWindowToken(), 0); // Solicitando o fechamento do teclado passando como argumento o objeto que solicitou sua abertura.
-            }
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE); // Definindo um objeto gerenciador do teclado para manipular recursos de serviços.
+            inputMethodManager.hideSoftInputFromWindow(editTextHeight.getWindowToken(), 0); // Solicitando o fechamento do teclado passando como argumento o objeto que solicitou sua abertura.
         });
     }
 
