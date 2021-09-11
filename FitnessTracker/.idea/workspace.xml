@@ -28,212 +28,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cedf8543-ea8d-4305-89af-3b859832d1e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FitnessTracker.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/co/tiagoaguiar/codelab/myapplication/ImcActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/btn_circle_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edtxt_circle_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_emoji_people_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_imc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/androidTest/java/co/tiagoaguiar/codelab/myapplication/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/java/co/tiagoaguiar/codelab/myapplication/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/app/src/test/java/co/tiagoaguiar/codelab/myapplication/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitnessTracker/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/._FitnessTracker" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/._.DS_Store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/._.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/._.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/._.idea" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/._app" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/._build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/._gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/._gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/._gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/._gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/._settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/._6.5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/._buildOutputCleanup" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/._checksums" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/._vcs-1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/._executionHistory" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/._fileChanges" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/._fileContent" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/._fileHashes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/._gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/._javaCompile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/._vcsMetadata-1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/executionHistory/._executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/executionHistory/._executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/fileChanges/._last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/fileContent/._fileContent.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/fileHashes/._fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/fileHashes/._fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/fileHashes/._resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/javaCompile/._classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/javaCompile/._jarAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/javaCompile/._javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/6.5/javaCompile/._taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/buildOutputCleanup/._buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/buildOutputCleanup/._cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/buildOutputCleanup/._outputFiles.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/checksums/._checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/checksums/._md5-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/checksums/._sha1-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.gradle/vcs-1/._gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/._.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/._.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/._caches" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/._compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/._gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/._jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/._libraries" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/._misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/._modules" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/._modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/._workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/caches/._build_file_checksums.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_activity_activity_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_annotation_annotation_1_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_appcompat_appcompat_1_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_appcompat_appcompat_resources_1_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_arch_core_core_common_2_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_collection_collection_1_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_constraintlayout_constraintlayout_2_0_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_constraintlayout_constraintlayout_solver_2_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_core_core_1_3_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_fragment_fragment_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_lifecycle_lifecycle_common_2_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_recyclerview_recyclerview_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_test_core_1_3_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_test_espresso_espresso_core_3_3_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_test_espresso_espresso_idling_resource_3_3_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_test_ext_junit_1_1_2_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_test_monitor_1_3_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_test_runner_1_3_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__com_google_code_findbugs_jsr305_2_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__com_squareup_javawriter_2_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__javax_inject_javax_inject_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__junit_junit_4_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__org_hamcrest_hamcrest_integration_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/libraries/._Gradle__org_hamcrest_hamcrest_library_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/modules/._My_Application.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/modules/._app" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/.idea/modules/app/._My_Application.app.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/._.DS_Store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/._.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/._build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/._libs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/._proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/._src" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/._androidTest" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/._main" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/._test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/androidTest/._java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/androidTest/java/._co" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/androidTest/java/co/._tiagoaguiar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/androidTest/java/co/tiagoaguiar/._codelab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/androidTest/java/co/tiagoaguiar/codelab/._myapplication" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/androidTest/java/co/tiagoaguiar/codelab/myapplication/._ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/._AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/._java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/._res" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/java/._co" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/java/co/._tiagoaguiar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/java/co/tiagoaguiar/._codelab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/java/co/tiagoaguiar/codelab/._myapplication" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/java/co/tiagoaguiar/codelab/myapplication/._MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/._drawable" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/._drawable-v24" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/._layout" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/._mipmap-anydpi-v26" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/._mipmap-hdpi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/._mipmap-mdpi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/._mipmap-xhdpi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/._mipmap-xxhdpi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/._mipmap-xxxhdpi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/._values" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/._values-night" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/drawable-v24/._ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/drawable/._ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/layout/._activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-anydpi-v26/._ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-anydpi-v26/._ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-hdpi/._ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-hdpi/._ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-mdpi/._ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-mdpi/._ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-xhdpi/._ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-xhdpi/._ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-xxhdpi/._ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-xxhdpi/._ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-xxxhdpi/._ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/mipmap-xxxhdpi/._ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/values/._colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/values/._strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/main/res/values/._styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/test/._java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/test/java/._co" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/test/java/co/._tiagoaguiar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/test/java/co/tiagoaguiar/._codelab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/test/java/co/tiagoaguiar/codelab/._myapplication" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/app/src/test/java/co/tiagoaguiar/codelab/myapplication/._ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/gradle/._wrapper" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/gradle/wrapper/._gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/__MACOSX/FitnessTracker/gradle/wrapper/._gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/co/tiagoaguiar/codelab/myapplication/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/co/tiagoaguiar/codelab/myapplication/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,6 +51,13 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="resourceFile" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -265,6 +78,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-05T14:34:57.856Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android-custom-viewC:/Users/diego/AppData/Local/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/values" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -274,6 +88,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="android.template.-943139977">
+      <recent name="co.tiagoaguiar.codelab.myapplication" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/values" />
     </key>
@@ -371,13 +188,37 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="500" height="445" key="SwitcherDM" timestamp="1604587479514">
-      <screen x="27" y="23" width="2533" height="1057" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1631373075982">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/27.23.2533.1057@27.23.2533.1057" timestamp="1604587479514" />
-    <state x="449" y="336" key="chooseDestDirectoryDialog" timestamp="1604587454363">
-      <screen x="27" y="23" width="2533" height="1057" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/1920.102.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1631373075982" />
+    <state x="540" y="275" key="AndroidCreateResourceDirectoryDialog" timestamp="1631371814049">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="449" y="336" key="chooseDestDirectoryDialog/27.23.2533.1057@27.23.2533.1057" timestamp="1604587454363" />
+    <state x="540" y="275" key="AndroidCreateResourceDirectoryDialog/1920.102.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1631371814049" />
+    <state x="565" y="285" key="AndroidCreateResourceFileDialog" timestamp="1631379813486">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="565" y="285" key="AndroidCreateResourceFileDialog/1920.102.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1631379813486" />
+    <state x="805" y="327" key="AndroidCreateXmlResourceDialog" timestamp="1631381812853">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="805" y="327" key="AndroidCreateXmlResourceDialog/1920.102.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1631381812853" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1631375197718">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/1920.102.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1631375197717" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1631375197717">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/1920.102.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1631375197717" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1631375197717">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/1920.102.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1631375197717" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1631375197717">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/1920.102.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1631375197717" />
   </component>
 </project>
