@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,24 +36,30 @@ public class MainActivity extends AppCompatActivity {
 
 //		btnImc = findViewById(R.id.btn_imc);
 		rvMain = findViewById(R.id.rv_main); // Referenciando minha RecyclerView.
-		rvMain.setLayoutManager(new LinearLayoutManager(this)); // Definindo o comportamento de exibição do RecyclerView.
+		rvMain.setLayoutManager(new GridLayoutManager(this, 2)); // Definindo o comportamento de exibição do RecyclerView.
 
 		Adapter adapter = new Adapter(mainItems); // Criando o Adapter.
-		rvMain.setAdapter(adapter); // Definindo o Adapter da RecyclerView.
+		adapter.setListener(id -> { // Usando o método implementado no Adapter.
+			switch (id) {
+				case 1:
+					// Executando a intenção e criando a nova Activity.
+					startActivity(new Intent(MainActivity.this, ImcActivity.class));
+					break;
+				case 2:
+					// Executando a intenção e criando a nova Activity.
+					startActivity(new Intent(MainActivity.this, TmbActivity.class));
+					break;
+			}
+		});
 
-		// Usando o mêtodo setOnClickListener do meu objeto btnImc e passando um objeto como argumento que sera criado quando houver click no botão.
-//		btnImc.setOnClickListener(v -> {
-			// Definindo um objeto de intenção que recebe o contexto atual e a classe a ser executada.
-//			Intent intent = new Intent(MainActivity.this, ImcActivity.class);
-			// Executando a intenção e criando a nova Activity.
-//			startActivity(intent);
-//		});
+		rvMain.setAdapter(adapter); // Definindo o Adapter da RecyclerView.
 	}
 
 	// Recebe a referência de uma celular do RecyclerView e vincula uma ViewHolder.
-	private class Adapter extends RecyclerView.Adapter<ViewHolder> { // Vincula os dados a ViewHolder e a ViewHolder a RecyclerView.
+	private class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> { // Vincula os dados a ViewHolder e a ViewHolder a RecyclerView.
 
 		private List<MainItem> mainItems;
+		private	OnItemClickListener listener; // Definindo objeto da Interface implementada por mim.
 
 		public Adapter(List<MainItem> mainItems) {
 			this.mainItems = mainItems;
@@ -74,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
 //			return ViewHolder(getLayoutInflater().inflate(R.layout.main_item, parent, false));
 		}
 
+		public void setListener(OnItemClickListener listener) {
+			this.listener = listener;
+		}
+
 		@Override
 		public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull ViewHolder holder, int position) {
 			MainItem item = this.mainItems.get(position);
@@ -82,23 +93,28 @@ public class MainActivity extends AppCompatActivity {
 			holder.imageView.setImageResource(item.getDrawableId());
 			holder.container.setBackgroundColor(item.getColor());
 			holder.container.setBackgroundResource(item.getBackgroundId());
+
+			// Usando o mêtodo setOnClickListener do meu objeto btnImc e passando um objeto como argumento que sera criado quando houver click no botão.
+			holder.container.setOnClickListener(v -> {
+				listener.onClick(item.getId());
+			});
 		}
 
 		@Override
 		public int getItemCount() {
 			return this.mainItems.size(); // Definindo a quantidade de itens da RecyclerView.
 		}
-	}
 
-	// View de cadas celula do RecyclerView.
-	private class ViewHolder extends RecyclerView.ViewHolder { // Classe que possui a referência das Views componete de cada Item da RecyclerView.
+		// View de cadas celula do RecyclerView.
+		private class ViewHolder extends RecyclerView.ViewHolder { // Classe que possui a referência das Views componete de cada Item da RecyclerView.
 
-		TextView textView = itemView.findViewById(R.id.main_label_item);
-		ImageView imageView = itemView.findViewById(R.id.main_img_item);
-		LinearLayout container = (LinearLayout) itemView;
+			TextView textView = itemView.findViewById(R.id.main_label_item);
+			ImageView imageView = itemView.findViewById(R.id.main_img_item);
+			LinearLayout container = itemView.findViewById(R.id.main_item);
 
-		public ViewHolder(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
-			super(itemView); // Passando a View que será vinculada a ViewHolder.
+			public ViewHolder(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
+				super(itemView); // Passando a View que será vinculada a ViewHolder.
+			}
 		}
 	}
 }

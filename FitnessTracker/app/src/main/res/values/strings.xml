@@ -16,4 +16,5 @@
     <string name="imc_extreme_weight">Extremamente obeso</string>
     <string name="imc_response">Imc: %1$.2f</string>
     <string name="label_tmb">TMB</string>
+    <string name="label_img">Click me!</string>
 </resources>
