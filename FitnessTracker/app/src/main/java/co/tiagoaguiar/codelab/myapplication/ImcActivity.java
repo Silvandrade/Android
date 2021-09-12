@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import static androidx.core.os.LocaleListCompat.create;
 
 public class ImcActivity extends AppCompatActivity {
 
@@ -41,14 +44,24 @@ public class ImcActivity extends AppCompatActivity {
             double imcResult = calculate(height, weight); // Retornando o valor do IMC.
             int imcResponseId = imcResponse(imcResult); // Retornado o valor do item do arquivo de recurso.
 
-//                Toast.makeText(ImcActivity.this, imcResponseId, Toast.LENGTH_LONG).show(); // Exibindo a mensagem com o IMC e a descrição.
-
             // Criando um botão de ok com o arquivo de recurso do android e implemendo um ouvinte de clique.
             AlertDialog dialog = new AlertDialog.Builder(ImcActivity.this)
                     .setTitle(getString(R.string.imc_response, imcResult)) // Criando o título da caixa e usando o método getString para mudar dinâmicamente o valor no arquivo de recursos.
                     .setMessage(imcResponseId) // Criando a mensagem usando como argumento o valor do item do arquivo de recurso.
-                    .setPositiveButton(android.R.string.ok, (dialog1, which) -> {
+                    .setPositiveButton(android.R.string.ok, (dialog1, which) -> {}) // Botão positive fica na direita.
+                    .setNegativeButton(R.string.save, (dialog1, which) -> { // Botão negative fica na esquerda.
 
+                        new Thread(() -> { // Código será executado em um bloco de instrução do processador separada para não segurar a Thread principal.
+                            long calcId = SqlHelper.getInstance(ImcActivity.this).addItem("imc", imcResult);
+                            runOnUiThread(() -> { // Devolvendo a execução para Thread principal.
+                                if(calcId > 0) {
+                                    Toast.makeText(ImcActivity.this, R.string.salved, Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(ImcActivity.this, ListCalcActivity.class); // Abrindo a ActivityListCalc.
+                                    intent.putExtra("type", "imc"); // Passando dados para a ActivityListCalc.
+                                    startActivity(intent); // Executando.
+                                }
+                            });
+                        }).start();
                     })
                     .create();
 

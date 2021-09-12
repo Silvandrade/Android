@@ -22,7 +22,6 @@ import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
 
-//	private View btnImc;
 	private RecyclerView rvMain;
 
 	@Override
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 		mainItems.add(new MainItem(1, R.drawable.ic_baseline_emoji_people_24, R.string.label_imc, Color.GREEN, R.drawable.btn_circle_background));
 		mainItems.add(new MainItem(2, R.drawable.ic_baseline_pregnant_woman_24, R.string.label_tmb, Color.YELLOW, R.drawable.btn_circle_background));
 
-//		btnImc = findViewById(R.id.btn_imc);
 		rvMain = findViewById(R.id.rv_main); // Referenciando minha RecyclerView.
 		rvMain.setLayoutManager(new GridLayoutManager(this, 2)); // Definindo o comportamento de exibição do RecyclerView.
 
@@ -56,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	// Recebe a referência de uma celular do RecyclerView e vincula uma ViewHolder.
-	private class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> { // Vincula os dados a ViewHolder e a ViewHolder a RecyclerView.
+	private static class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> { // Vincula os dados a ViewHolder e a ViewHolder a RecyclerView.
 
-		private List<MainItem> mainItems;
-		private	OnItemClickListener listener; // Definindo objeto da Interface implementada por mim.
+		private final List<MainItem> mainItems;
+		private	OnItemClickListener listener; // Definindo variável da Interface OnItemClickListener.
 
 		public Adapter(List<MainItem> mainItems) {
 			this.mainItems = mainItems;
@@ -75,14 +73,13 @@ public class MainActivity extends AppCompatActivity {
                 O primeiro argumento se refere à View que será inflada, neste caso será um LayoutLinear;
                 O segundo argumento é uma referência ao local onde a View será inflanda, neste caso no meu RecyclerView. */
 			View view = inflater.inflate(R.layout.main_item, parent, false);
-			ViewHolder viewHolder = new ViewHolder(view); // Criando o objeto ViewHolder passando como argumento a View que será vinculada à ViewHolder.
-			return viewHolder;
+			return new ViewHolder(view); // Criando o objeto ViewHolder passando como argumento a View que será vinculada à ViewHolder.
 
 //			return ViewHolder(getLayoutInflater().inflate(R.layout.main_item, parent, false));
 		}
 
 		public void setListener(OnItemClickListener listener) {
-			this.listener = listener;
+			this.listener = listener; // Definindo o objeto.
 		}
 
 		@Override
@@ -106,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 		}
 
 		// View de cadas celula do RecyclerView.
-		private class ViewHolder extends RecyclerView.ViewHolder { // Classe que possui a referência das Views componete de cada Item da RecyclerView.
+		private static class ViewHolder extends RecyclerView.ViewHolder { // Classe que possui a referência das Views componete de cada Item da RecyclerView.
 
 			TextView textView = itemView.findViewById(R.id.main_label_item);
 			ImageView imageView = itemView.findViewById(R.id.main_img_item);

@@ -17,4 +17,6 @@
     <string name="imc_response">Imc: %1$.2f</string>
     <string name="label_tmb">TMB</string>
     <string name="label_img">Click me!</string>
+    <string name="save">Salvar</string>
+    <string name="salved">Registro salvo com sucesso.</string>
 </resources>
