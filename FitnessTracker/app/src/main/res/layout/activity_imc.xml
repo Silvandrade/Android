@@ -29,7 +29,7 @@
             android:hint="@string/imc_height" />
 
         <Button
-            android:id="@+id/btn_calc"
+            android:id="@+id/btn_imc_calc"
             style="@style/ButtonForm"
             android:text="@string/label_button" />
 

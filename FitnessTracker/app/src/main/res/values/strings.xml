@@ -14,9 +14,13 @@
     <string name="imc_so_high_weight">Moderadamente obeso</string>
     <string name="imc_severely_high_weight">Severamente obeso</string>
     <string name="imc_extreme_weight">Extremamente obeso</string>
-    <string name="imc_response">Imc: %1$.2f</string>
+    <string name="imc_response">IMC: %1$.2f</string>
+    <string name="tmb_response">TMB: %1$.2f</string>
     <string name="label_tmb">TMB</string>
     <string name="label_img">Click me!</string>
     <string name="save">Salvar</string>
     <string name="salved">Registro salvo com sucesso.</string>
+    <string name="search">Buscar</string>
+    <string name="tmb_desc">TMB é o cálculo para descobrir a quantidade calorica que o corpo nescessita com base no seu estilo de vida.</string>
+    <string name="tbm_age">Idade</string>
 </resources>
