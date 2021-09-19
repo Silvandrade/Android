@@ -104,9 +104,11 @@ public class CategoryTask extends AsyncTask<String, Void, List<Category>> { // E
             for(int j = 0; j < moviesArrayJason.length(); j++) {
                 final JSONObject movieJson = moviesArrayJason.getJSONObject(j); // Iterando por cada objeto movie.
                 String coverUrl = movieJson.getString("cover_url"); // Capturando o atributo cover_url do movie dentro do arquivo Json.
+                int id = movieJson.getInt("id"); // Capturando o id.
 
                 Movie movie = new Movie(); // Instanciando um objeto da minha classe.
                 movie.setCoverUrl(coverUrl); // Passando a url capturada do arquivo Json para o objeto movie instanciado.
+                movie.setId(id);
                 movies.add(movie); // Adicionando a filme a lista de filmes.
             }
 

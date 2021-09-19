@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.silvandrade.netflixremake.model.Category;
 import com.silvandrade.netflixremake.model.Movie;
 import com.silvandrade.netflixremake.util.CategoryTask;
+import com.silvandrade.netflixremake.util.ImageDownloaderTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements CategoryTask.Cate
         @Override
         public void onBindViewHolder(@NonNull MainActivity.MovieHolder holder, int position) {
             Movie movie = movies.get(position);
+            new ImageDownloaderTask(holder.imageView).execute(movie.getCoverUrl());
 //            holder.imageView.setImageResource(movie.getCoverUrl());
         }
 
