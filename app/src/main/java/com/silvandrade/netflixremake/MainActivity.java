@@ -11,13 +11,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.silvandrade.netflixremake.model.Category;
 import com.silvandrade.netflixremake.model.Movie;
+import com.silvandrade.netflixremake.util.CategoryTask;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CategoryTask.CategoryLoader {
 
     private CategoryAdapter categoryAdapter;
     private MovieAdapter movieAdapter;
+    private CategoryTask categoryTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,29 +32,38 @@ public class MainActivity extends AppCompatActivity {
         List<Category> categories = new ArrayList<>();
         List<Movie> movies = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
-            Category category = new Category();
-            category.setName("Categoria " + i);
-
-            for (int j = 0; j < 30; j++) {
-                Movie movie = new Movie();
-                movie.setCoverUrl(R.drawable.movie);
-                movies.add(movie);
-            }
-
-            category.setMovies(movies);
-            categories.add(category);
-        }
+//        for (int i = 0; i < 5; i++) {
+//            Category category = new Category();
+//            category.setName("Categoria " + i);
+//
+//            for (int j = 0; j < 30; j++) {
+//                Movie movie = new Movie();
+////                movie.setCoverUrl(R.drawable.movie);
+//                movies.add(movie);
+//            }
+//
+//            category.setMovies(movies);
+//            categories.add(category);
+//        }
 
         categoryAdapter = new CategoryAdapter(categories);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(categoryAdapter);
 
+        categoryTask = new CategoryTask(this);
+        categoryTask.setCategoryLoader(this); // Passando a classe que implementa a interface.
+        categoryTask.execute("https://tiagoaguiar.co/api/netflix/home");
+    }
+
+    @Override
+    public void onResult(List<Category> categories) {
+        categoryAdapter.setCategories(categories);
+        categoryAdapter.notifyDataSetChanged(); // Notificando a chegada dos dados.
     }
 
     private class CategoryAdapter extends RecyclerView.Adapter<CategoryHolder> {
 
-        private final List<Category> categories;
+        private List<Category> categories;
 
         private CategoryAdapter(List<Category> categories) {
             this.categories = categories;
@@ -77,6 +89,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getItemCount() {
             return categories.size();
+        }
+
+        void setCategories(List<Category> categories) {
+            this.categories.clear();
+            this.categories.addAll(categories);
         }
     }
 
