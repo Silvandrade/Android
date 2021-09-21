@@ -4,27 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.silvandrade.netflixremake.model.Category;
 import com.silvandrade.netflixremake.model.Movie;
 import com.silvandrade.netflixremake.util.CategoryTask;
 import com.silvandrade.netflixremake.util.ImageDownloaderTask;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements CategoryTask.CategoryLoader {
 
     private CategoryAdapter categoryAdapter;
-    private MovieAdapter movieAdapter;
-    private CategoryTask categoryTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements CategoryTask.Cate
         RecyclerView recyclerView = findViewById(R.id.recycler_view_main);
 
         List<Category> categories = new ArrayList<>();
-        List<Movie> movies = new ArrayList<>();
+//        List<Movie> movies = new ArrayList<>();
 
 //        for (int i = 0; i < 5; i++) {
 //            Category category = new Category();
@@ -54,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements CategoryTask.Cate
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(categoryAdapter);
 
-        categoryTask = new CategoryTask(this);
+        CategoryTask categoryTask = new CategoryTask(this);
         categoryTask.setCategoryLoader(this); // Passando a classe que implementa a interface.
         categoryTask.execute("https://tiagoaguiar.co/api/netflix/home");
     }
@@ -67,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements CategoryTask.Cate
 
     private class CategoryAdapter extends RecyclerView.Adapter<CategoryHolder> {
 
-        private List<Category> categories;
+        private final List<Category> categories;
 
         private CategoryAdapter(List<Category> categories) {
             this.categories = categories;
@@ -84,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements CategoryTask.Cate
             Category category;
             category = categories.get(position);
 
-            movieAdapter = new MovieAdapter(category.getMovies());
+            MovieAdapter movieAdapter = new MovieAdapter(category.getMovies());
             holder.recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext(), RecyclerView.HORIZONTAL, false));
             holder.recyclerView.setAdapter(movieAdapter);
             holder.textView.setText(category.getName());
@@ -96,12 +91,14 @@ public class MainActivity extends AppCompatActivity implements CategoryTask.Cate
         }
 
         void setCategories(List<Category> categories) {
-            this.categories.clear();
-            this.categories.addAll(categories);
+            if(categories != null) {
+                this.categories.clear();
+                this.categories.addAll(categories);
+            }
         }
     }
 
-    private class CategoryHolder extends RecyclerView.ViewHolder {
+    private static class CategoryHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
         RecyclerView recyclerView;
@@ -142,13 +139,15 @@ public class MainActivity extends AppCompatActivity implements CategoryTask.Cate
 
         @Override
         public void onClick(int position) {
-            Intent intent = new Intent(MainActivity.this, MovieActivity.class); // Definindo intenção de abrir outra Activity.
-            intent.putExtra("id", movies.get(position).getId()); // Passando o Id para MovieActivity de acordo com a posição retornada pela interface de Listener.
-            startActivity(intent);
+            if(movies.get(position).getId() <= 3) {
+                Intent intent = new Intent(MainActivity.this, MovieActivity.class); // Definindo intenção de abrir outra Activity.
+                intent.putExtra("id", movies.get(position).getId()); // Passando o Id para MovieActivity de acordo com a posição retornada pela interface de Listener.
+                startActivity(intent);
+            }
         }
     }
 
-    private class MovieHolder extends RecyclerView.ViewHolder {
+    private static class MovieHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
 
