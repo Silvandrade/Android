@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.silvandrade.netflixremake.model.Category;
@@ -110,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements CategoryTask.Cate
         }
     }
 
-    private class MovieAdapter extends RecyclerView.Adapter<MovieHolder> {
+    private class MovieAdapter extends RecyclerView.Adapter<MovieHolder> implements OnItemClickListener {
 
         private final List<Movie> movies;
 
@@ -121,7 +124,8 @@ public class MainActivity extends AppCompatActivity implements CategoryTask.Cate
         @NonNull
         @Override
         public MovieHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new MovieHolder(getLayoutInflater().inflate(R.layout.movie_item, parent, false));
+            View view = getLayoutInflater().inflate(R.layout.movie_item, parent, false);
+            return new MovieHolder(view, this);
         }
 
         @Override
@@ -135,16 +139,31 @@ public class MainActivity extends AppCompatActivity implements CategoryTask.Cate
         public int getItemCount() {
             return movies.size();
         }
+
+        @Override
+        public void onClick(int position) {
+            Intent intent = new Intent(MainActivity.this, MovieActivity.class); // Definindo intenção de abrir outra Activity.
+            intent.putExtra("id", movies.get(position).getId()); // Passando o Id para MovieActivity de acordo com a posição retornada pela interface de Listener.
+            startActivity(intent);
+        }
     }
 
     private class MovieHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
 
-        public MovieHolder(@NonNull View itemView) {
+        public MovieHolder(@NonNull View itemView, OnItemClickListener onItemClickListener) { // Construtor recebe a classe que implementa onItemClickListener.
             super(itemView);
             imageView = itemView.findViewById(R.id.image_view_cover);
+
+            itemView.setOnClickListener(v -> {
+                onItemClickListener.onClick(getAdapterPosition()); // Passando para minha interface a posição do item clicado.
+            });
         }
+    }
+
+    interface OnItemClickListener {
+        void onClick(int position);
     }
 
 }

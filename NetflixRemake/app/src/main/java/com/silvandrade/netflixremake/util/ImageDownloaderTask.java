@@ -24,10 +24,10 @@ public class ImageDownloaderTask extends AsyncTask<String, Void, Bitmap> {
     }
 
     @Override
-    protected Bitmap doInBackground(String... params) {
+    protected Bitmap doInBackground(String... urlParams) {
 
         // Fazendo a requisição Web.
-        String urlImage = params[0]; // Pegando a referência da Url que vem como parâmentro.
+        String urlImage = urlParams[0]; // Pegando a referência da Url que vem como parâmentro.
         HttpsURLConnection urlConnection = null;
         try {
             // Requisitando URL.

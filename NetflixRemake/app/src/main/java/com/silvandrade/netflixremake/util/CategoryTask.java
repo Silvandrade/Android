@@ -48,12 +48,12 @@ public class CategoryTask extends AsyncTask<String, Void, List<Category>> { // E
 
     // Vai ser executado paralelamente em outra thread background.
     @Override
-    protected List<Category> doInBackground(String... params) {
-        String url = params[0]; // Pegando o link da página do conteúdo.
+    protected List<Category> doInBackground(String... urlParams) {
+        String url = urlParams[0]; // Pegando o link da página do conteúdo.
 
         try {
             URL requestUrl = new URL(url);
-//            URLConnection urlConnection = requestUrl.openConnection();
+//            URLConnection urlConnection = requestUrl.openConnection(); // Substituido pelo método HttlsURLConection.
             HttpsURLConnection urlConnection = (HttpsURLConnection) requestUrl.openConnection(); // Abrindo a conexão.
             urlConnection.setReadTimeout(2000); // Tempo de espera de leitura.
             urlConnection.setConnectTimeout(2000); // Tempo para mostrar mensagem de erro.
@@ -108,7 +108,7 @@ public class CategoryTask extends AsyncTask<String, Void, List<Category>> { // E
 
                 Movie movie = new Movie(); // Instanciando um objeto da minha classe.
                 movie.setCoverUrl(coverUrl); // Passando a url capturada do arquivo Json para o objeto movie instanciado.
-                movie.setId(id);
+                movie.setId(id); // Pasando o Id do JSON para o objeto filme.
                 movies.add(movie); // Adicionando a filme a lista de filmes.
             }
 

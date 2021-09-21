@@ -3,6 +3,7 @@ package com.silvandrade.netflixremake;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,16 +19,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.silvandrade.netflixremake.model.Movie;
+import com.silvandrade.netflixremake.model.MovieDetail;
+import com.silvandrade.netflixremake.util.ImageDownloaderTask;
+import com.silvandrade.netflixremake.util.MovieDetailTask;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieActivity extends AppCompatActivity {
+public class MovieActivity extends AppCompatActivity implements MovieDetailTask.MovieDetailLoader {
 
     private TextView textTitle;
     private TextView textDesc;
     private TextView textCast;
     private RecyclerView recyclerView;
+    private MovieAdapter movieAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,24 +61,44 @@ public class MovieActivity extends AppCompatActivity {
 //            ((ImageView) findViewById(R.id.image_view_cover)).setImageDrawable(layerDrawable); // Acessando o ImageView de movie_item.xml e atualizando a imagem.
         }
 
-        textTitle.setText("Batman Begins");
-        textDesc.setText("Marcado pelo assassinato de seus pais quando ainda era criança, " +
-                "o milionário Bruce Wayne (Christian Bale) decide viajar pelo mundo em busca de " +
-                "encontrar meios que lhe permitam combater a injustiça e provocar medo em seus adversários. " +
-                "Após retornar a Gotham City, sua cidade-natal, ele idealiza seu alter-ego: Batman, um justiceiro " +
-                "mascarado que usa força, inteligência e um arsenal tecnológico para combater o crime.");
-        textCast.setText(getString(R.string.cast, "Christian Bale, Katie Holmes, Michael Caine")); // Passando variável para o recurso de string.
+//        textTitle.setText("Batman Begins");
+//        textDesc.setText("Marcado pelo assassinato de seus pais quando ainda era criança, " +
+//                "o milionário Bruce Wayne (Christian Bale) decide viajar pelo mundo em busca de " +
+//                "encontrar meios que lhe permitam combater a injustiça e provocar medo em seus adversários. " +
+//                "Após retornar a Gotham City, sua cidade-natal, ele idealiza seu alter-ego: Batman, um justiceiro " +
+//                "mascarado que usa força, inteligência e um arsenal tecnológico para combater o crime.");
+//        textCast.setText(getString(R.string.cast, "Christian Bale, Katie Holmes, Michael Caine")); // Passando variável para o recurso de string.
 
         List<Movie> movies = new ArrayList<>();
 
-        for(int i = 0; i < 30; i++) {
-            Movie movie = new Movie();
-            movies.add(movie);
-        }
+//        for(int i = 0; i < 30; i++) {
+//            Movie movie = new Movie();
+//            movies.add(movie);
+//        }
 
-        recyclerView.setAdapter(new MovieAdapter(movies));
+        movieAdapter = new MovieAdapter(movies);
+        recyclerView.setAdapter(movieAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
+//        int id = getIntent().getExtras().getInt("id"); // Recuperando o id passado pela MainActivity.
+        Bundle extras = getIntent().getExtras();
+
+        if(extras != null) {
+            int id = extras.getInt("id"); // Recuperando o id passado pela MainActivity.
+            MovieDetailTask movieDetailTask = new MovieDetailTask(this);
+            movieDetailTask.setMovieDetailLoader(this);
+            movieDetailTask.execute("https://tiagoaguiar.co/api/netflix/" + id);
+        }
+
+    }
+
+    @Override
+    public void onResult(MovieDetail movieDetail) {
+        textTitle.setText(movieDetail.getMovie().getTitle());
+        textDesc.setText(movieDetail.getMovie().getDesc());
+        textCast.setText(movieDetail.getMovie().getCast());
+        movieAdapter.setMovies(movieDetail.getMoviesSimilar());
+        movieAdapter.notifyDataSetChanged();
     }
 
     private class MovieAdapter extends RecyclerView.Adapter<MovieHolder> {
@@ -84,6 +109,11 @@ public class MovieActivity extends AppCompatActivity {
             this.movies = movies;
         }
 
+        public void setMovies(List<Movie> movies) {
+            this.movies.clear();
+            this.movies.addAll(movies);
+        }
+
         @NonNull
         @Override
         public MovieHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -92,7 +122,8 @@ public class MovieActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull MovieActivity.MovieHolder holder, int position) {
-
+            Movie movie = movies.get(position);
+            new ImageDownloaderTask(holder.imageView).execute(movies.get(position).getCoverUrl());
         }
 
         @Override
@@ -102,9 +133,10 @@ public class MovieActivity extends AppCompatActivity {
     }
 
     private class MovieHolder extends RecyclerView.ViewHolder {
-
+        ImageView imageView;
         public MovieHolder(@NonNull View itemView) {
             super(itemView);
+            imageView = itemView.findViewById(R.id.image_view_cover);
         }
     }
 

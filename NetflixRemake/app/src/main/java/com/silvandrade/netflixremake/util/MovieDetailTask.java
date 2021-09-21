@@ -74,7 +74,7 @@ public class MovieDetailTask extends AsyncTask<String, Void, MovieDetail> {
 
             inputStream.close(); // Fechando a conexão.
 
-            return movieDetail; // Vai delegar para mai thread e vai chegar onPosExecute.
+            return movieDetail; // Vai delegar para main thread e vai chegar onPosExecute.
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
