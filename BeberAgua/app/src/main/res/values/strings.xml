@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">BeberAgua</string>
+    <string name="app_name">Beber Agua</string>
     <string name="place_holder">Intervalo (min)</string>
     <string name="notify">Notificar</string>
-    <string name="error_msg">Digite o intervalo.</string>
+    <string name="error_msg">Digite o intervalo válido.</string>
     <string name="pause">Pausar</string>
+    <string name="alarm">Hora de beber água.</string>
+    <string name="activated_alarm">Alarme ativado!</string>
+    <string name="desactivated_alarm">Alarme Desativado!</string>
 </resources>
