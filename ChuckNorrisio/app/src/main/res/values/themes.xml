@@ -18,4 +18,16 @@
     <style name="Theme.ChuckNorrisio.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.ChuckNorrisio.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.ChuckNorrisio.Fullscreen" parent="Theme.ChuckNorrisio.NoActionBar">
+        <item name="android:actionBarStyle">@style/Widget.Theme.ChuckNorrisio.ActionBar.Fullscreen
+        </item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="ThemeOverlay.ChuckNorrisio.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
 </resources>
