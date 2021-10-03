@@ -72,7 +72,7 @@ public class JokeRemoteDataSource {
 
                         if(name.equals(category)) {
                             jsonReader.skipValue(); // Pular esse valor.
-                        } else if(name.equals("iconUrl")) {
+                        } else if(name.equals("icon_url")) {
                             iconUrl = jsonReader.nextString(); // Pegando o valor.
                         } else if(name.equals("value")) {
                             jokeText = jsonReader.nextString();

@@ -4,12 +4,14 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.silvandrade.chucknorrisio.databinding.ActivityJokeBinding;
 import com.silvandrade.chucknorrisio.datasource.JokeRemoteDataSource;
 import com.silvandrade.chucknorrisio.model.Joke;
 import com.silvandrade.chucknorrisio.presentation.JokePresenter;
+import com.squareup.picasso.Picasso;
 
 public class JokeActivity extends AppCompatActivity {
 
@@ -75,6 +77,10 @@ public class JokeActivity extends AppCompatActivity {
     public void showJoke(Joke joke) {
         final TextView jokeText = findViewById(R.id.txt_joke);
         jokeText.setText(joke.getJokeText());
+
+        ImageView imgJoke = findViewById(R.id.img_icon);
+
+        Picasso.get().load(joke.getIconUrl()).into(imgJoke); // Utilizando a biblioteca Picasso.
     }
 
     public void showFailure(String message) {
