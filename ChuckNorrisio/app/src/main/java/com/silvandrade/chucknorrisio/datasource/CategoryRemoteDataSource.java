@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class CategoryRemoteDataSource {
 
     public interface ListCategoriesCallback { // Definindo interface para manipular resposta.
@@ -21,9 +25,29 @@ public class CategoryRemoteDataSource {
     }
 
     public void findAll(ListCategoriesCallback callback) {
-        new CategoryTask(callback).execute();
+
+        HttpClient.retrofit().create(ChuckNorrisAPI.class)
+                .findAll()
+                .enqueue(new Callback<List<String>>() { // Para fazer de forma assincrona.
+                    @Override
+                    public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                        if(response.isSuccessful()) {
+                            callback.onSuccess(response.body()); // Passando minha lista de categorias.
+                            callback.onComplete();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<String>> call, Throwable t) {
+                        callback.onError(t.getMessage());
+                        callback.onComplete();
+                    }
+                });
+
+//        new CategoryTask(callback).execute(); Metodo substituido pelo retrofit.
     }
 
+//    Substituido pelo Retrofit.
     private static class CategoryTask extends AsyncTask<Void, Void, List<String>> {
 
         private final ListCategoriesCallback callback;

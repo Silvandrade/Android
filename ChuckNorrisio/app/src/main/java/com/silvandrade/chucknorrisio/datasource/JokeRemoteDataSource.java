@@ -13,6 +13,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class JokeRemoteDataSource {
 
     public interface JokeCallback {
@@ -22,9 +26,28 @@ public class JokeRemoteDataSource {
     }
 
     public void findJokeBy(JokePresenter jokeCallBack, String category) {
-        new JokeTask(jokeCallBack, category).execute();
+
+        HttpClient.retrofit().create(ChuckNorrisAPI.class)
+                .findJokeBy(category)
+                .enqueue(new Callback<Joke>() {
+                    @Override
+                    public void onResponse(Call<Joke> call, Response<Joke> response) {
+                        if(response.isSuccessful()) {
+                            jokeCallBack.onSuccess(response.body());
+                            jokeCallBack.onComplete();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Joke> call, Throwable t) {
+                        jokeCallBack.onComplete();
+                    }
+                });
+
+//        new JokeTask(jokeCallBack, category).execute(); Metodo substituido pelo retrofit.
     }
 
+//    Substituido pelo Retrofit.
     private static class JokeTask extends AsyncTask<Void, Void, Joke> {
 
         private final JokePresenter jokeCallBack;
