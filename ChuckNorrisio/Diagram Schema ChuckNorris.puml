@@ -1,0 +1,112 @@
+@startuml
+!define LIGHTORANGE
+!include https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+package DataChuckNorrisIo <<Cloud>> {
+
+    class "DataJSON" as DJ << (D,orchid) >> {
+        + List<String> Categories
+        + List<String> Jokes
+    }
+}
+
+package "com.silvandrade.chucknorrisio" {
+
+    package "model" #FFFFFFFF{
+
+        class "CategoryItem" as CI <extends Item <ViewHolder>> {
+            - String categoryName
+            - int bgColor
+            __
+            + CategoryItem (String categoryName, int bgColor)
+            ..
+            + void bind(ViewHolder viewHolder, int position)
+            + int getLayout() = R.layout.card_category_main
+        }
+    }
+
+    package "presentation" #FFFFFFFF{
+
+        class "CategoryPresenter" as CP <implements CategoryRemoteDataSource.ListCategoriesCallback> {
+            - MainActivity mainActivity
+            - CategoryRemoteDataSource dataSource
+            - List<CategoryItem> response
+            __
+            + CategoryPresenter(MainActivity mainActivity, CategoryRemoteDataSource dataSource)
+            ..
+            + void requestAll()
+            + void onSuccess(List<String> response)
+            + void onError(String message)
+            + void onComplete()
+        }
+    }
+
+    package "datasource" {
+
+        class "CategoryRemoteDataSource" as CRDS {
+            + void findAll(ListCategoriesCallback callback)
+            + interface ListCategoriesCallback{}
+            - {static} class CategoryTask{}
+        }
+
+        +interface "ListCategoriesCallback" as LCC #aliceblue ##[dotted]blue{
+            void onSuccess(List<String> response)
+            void onError(String message)
+            void onComplete()
+        }
+
+        CRDS::ListCategoriesCallback . LCC
+
+        class "CategoryTask" as CT <extends AsyncTask<Void, Void, List<String>>>  << (S,#FF7700) Singleton >> {
+            - ListCategoriesCallback callback
+            - String errorMessage
+            __
+            CategoryTask(ListCategoriesCallback callback)
+            ..
+            # List<String> doInBackground(Void... params) = response
+            # void onPostExecute(List<String> response)
+        }
+
+        CRDS::CategoryTask .. CT
+
+        class EndPoint {
+            {static} +String BASE_URL
+            {static} +String GET_CATEGORY
+        }
+    }
+
+    class Colors {
+        {static} int randomColor() = Color.argb()
+    }
+
+    class "MainActivity" as MA <implements NavigationView.OnNavigationItemSelectedListener> {
+        - ActivityMainBinding binding;
+        - GroupAdapter adapter;
+        - CategoryPresenter presenter;
+        - ProgressDialog progress;
+
+        # void onCreate(Bundle savedInstanceState)
+        + void showProgressDialog()
+        + void hideProgressDialog()
+        + void showCategories(List<CategoryItem> items)
+        + void showFailure(String message)
+        + void onBackPressed()
+        + boolean onNavigationItemSelected(MenuItem item) = true
+    }
+
+}
+
+MA::onCreate --> CP::requestAll : 0 - Solicitando os dados. >
+CP::requestAll --> MA::showProgressDialog : 1 - Exibir barra de progresso. >
+CP::requestAll --> CRDS::findAll : 2 - Chama a consulta dos dados e passa a referência da classe que implementa a interface de escuta. >
+CRDS::findAll --> CT::CategoryTask : 3 - Chama o contrutor e repassa a referência da classe que implementa a interface de escuta. >
+CT::doInBackground --> EndPoint::GET_CATEGORY : 4 - Pega a URL da API >
+CT::doInBackground --> DJ::Categories : 4.1 - Conecta à API >
+CT::onPostExecute -[#green]-> CP::onSuccess : 5 - Pode chamar o metodo de sucesso e passa um Array de String com os dados. >
+CT::onPostExecute -[#red]-> CP::onError : 5 - Pode chamar o metodo de erro e passa a mensagem erro. >
+CP::onError -[#red]-> MA::showFailure : 6 - Pode chamar o metodo de exibição de erro e passar a mensagem. >
+CP::onSuccess -[#green]-> Colors::randomColor : 6 - Criando uma cor aleatória. >
+CP::onSuccess -[#green]-> CI::CategoryItem : 6.1 - Criando objetos CategoryItem.
+CP::onSuccess -[#green]-> MA::showCategories : 6.2 - Chamando o metodo de exibição dos dados e passar um Array de Categorias. >
+
+@enduml

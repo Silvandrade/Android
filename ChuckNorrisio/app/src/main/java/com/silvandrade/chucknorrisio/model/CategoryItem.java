@@ -27,4 +27,8 @@ public class CategoryItem extends Item<ViewHolder> {
     public int getLayout() { // Infla o layout.
         return R.layout.card_category_main;
     }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
 }
