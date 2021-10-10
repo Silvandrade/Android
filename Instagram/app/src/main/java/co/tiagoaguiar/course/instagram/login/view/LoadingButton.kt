@@ -12,7 +12,7 @@ import co.tiagoaguiar.course.instagram.R
 class LoadingButton : FrameLayout {
 
     private lateinit var button: Button
-    private lateinit var progress: ProgressBar;
+    private lateinit var progress: ProgressBar
     private lateinit var text: String
 
     constructor(context: Context) : super(context)
@@ -49,7 +49,7 @@ class LoadingButton : FrameLayout {
         button.setOnClickListener(l) // Passando o listener para nosso botão.
     }
 
-    public fun showProgress(enabled: Boolean) {
+    fun showProgress(enabled: Boolean) {
         if(enabled) {
             button.text = ""
             button.isEnabled = false
