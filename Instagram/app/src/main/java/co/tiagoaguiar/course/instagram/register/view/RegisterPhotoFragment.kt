@@ -15,14 +15,26 @@ class RegisterPhotoFragment: Fragment() {
         return inflater.inflate(R.layout.fragment_register_photo, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) { // Depois que o fragment tiver sido criado.
         super.onViewCreated(view, savedInstanceState)
 
         val customDialog = CustomDialog(requireContext()) // Instancia uma CustomDialog passando o contexto do Fragment.
 
-        customDialog.addButton({
-            Log.i("Teste", (it as TextView).text.toString())
-        }, R.string.photo, R.string.gallery)
+        customDialog.setTitle(R.string.app_name)
+        customDialog.addButton(R.string.photo, R.string.gallery) {
+            // Passando o listener como argumento do método addButtom.
+            when(it.id) {
+                R.string.photo -> {
+                    Log.i("Teste", (it as TextView).text.toString())
+                }
+                R.string.gallery -> {
+                    Log.i("Teste", (it as TextView).text.toString())
+                }
+            }
+        }
+//        customDialog.addButton({
+//            Log.i("Teste", (it as TextView).text.toString())
+//        }, R.string.photo, R.string.gallery)
 
         customDialog.show()
     }
