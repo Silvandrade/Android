@@ -7,9 +7,11 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import co.tiagoaguiar.course.instagram.R
+import co.tiagoaguiar.course.instagram.databinding.DialogCustomBinding
 
 class CustomDialog(context: Context): Dialog(context) {
 
+    private lateinit var binding: DialogCustomBinding
     private lateinit var dialogLinearLayout: LinearLayout
     private lateinit var txtButtons: Array<TextView>
 
@@ -18,10 +20,12 @@ class CustomDialog(context: Context): Dialog(context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dialog_custom)
 
-        dialogLinearLayout = findViewById(R.id.dialog_container) // Referênciando meu ViewGroup do arquivo dialog_custom.xml
-        dialogTitle = findViewById(R.id.dialog_title)
+        binding = DialogCustomBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        dialogLinearLayout = binding.dialogContainer // Referênciando meu ViewGroup do arquivo dialog_custom.xml
+        dialogTitle = binding.dialogTitle
     }
 
     override fun setTitle(titleId: Int) { // Recebe um arquivo de recurso e armazena o valor em uma variável
@@ -35,12 +39,14 @@ class CustomDialog(context: Context): Dialog(context) {
         }
 
         texts.forEachIndexed {index, txtId->
-            txtButtons[index].id = txtId // Definindo o ID de cada textview.
-            txtButtons[index].setText(txtId) // Definindo o texto de cada textview.
-            // Definindo o listener de cada textview.
-            txtButtons[index].setOnClickListener {
-                listener.onClick(it) // Passando a referência do próprio textview como argumento.
-                dismiss() // Esconde a dialog.
+            with(txtButtons[index]) {
+                id = txtId // Definindo o ID de cada textview.
+                setText(txtId) // Definindo o texto de cada textview.
+                // Definindo o listener de cada textview.
+                setOnClickListener {
+                    listener.onClick(it) // Passando a referência do próprio textview como argumento.
+                    dismiss() // Esconde a dialog.
+                }
             }
         }
     }

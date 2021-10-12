@@ -11,35 +11,37 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import co.tiagoaguiar.course.instagram.R
+import co.tiagoaguiar.course.instagram.databinding.ActivityLoginBinding
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity() {
+
+  private lateinit var binding: ActivityLoginBinding
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_login)
 
-    val editTextEmail = findViewById<EditText>(R.id.login_edit_email)
-    val editTextPassword = findViewById<EditText>(R.id.login_edit_password)
-    val buttonEnter = findViewById<LoadingButton>(R.id.login_btn_enter)
+    binding = ActivityLoginBinding.inflate(layoutInflater)
+    setContentView(binding.root)
 
-    editTextEmail.addTextChangedListener(watcher) // Evento de escuta de alteração de texto.
-    editTextPassword.addTextChangedListener(watcher)
+    val buttonEnter = binding.loginBtnEnter
 
-    // Objeto anônimo que implementa uma interface, quando o botão é clicado é acionado o metodo Listener do LoadingButton que é um FrameLayout por extensão.
-    buttonEnter.setOnClickListener{
+    with(binding) {
+      loginEditEmail.addTextChangedListener(watcher) // Evento de escuta de alteração de texto.
+      loginEditPassword.addTextChangedListener(watcher)
 
-      closeKeyboard(this)
-      buttonEnter.showProgress(true);
+      // Objeto anônimo que implementa uma interface, quando o botão é clicado é acionado o metodo Listener do LoadingButton que é um FrameLayout por extensão.
+      loginBtnEnter.setOnClickListener{
+        closeKeyboard(LoginActivity())
+        buttonEnter.showProgress(true);
 
-      findViewById<TextInputLayout>(R.id.login_edit_email_input)
-        .error = "Esse e-mail é inválido."
+        loginEditEmailInput.error = "Esse e-mail é inválido."
+        loginEditPasswordInput.error = "Senha inválida."
 
-      findViewById<TextInputLayout>(R.id.login_edit_password_input)
-        .error = "Senha inválida."
-
-      Handler(Looper.getMainLooper()).postDelayed({ // Método para simular um atraso de 2 segundo.
-        buttonEnter.showProgress(false)
-      }, 2000)
+        Handler(Looper.getMainLooper()).postDelayed({ // Método para simular um atraso de 2 segundo.
+          loginBtnEnter.showProgress(false)
+        }, 2000)
+      }
     }
   }
 
@@ -48,8 +50,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { // Toda vez que o texto for alterado.
-      val btnEnter = findViewById<LoadingButton>(R.id.login_btn_enter)
-      btnEnter.isEnabled = s.toString().isNotEmpty() // Retorna um boolean de edição de texto do campo e-mail.
+      binding.loginBtnEnter.isEnabled = s.toString().isNotEmpty() // Retorna um boolean de edição de texto do campo e-mail.
     }
 
     override fun afterTextChanged(s: Editable?) {

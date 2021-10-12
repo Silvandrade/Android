@@ -1,23 +1,28 @@
-package co.tiagoaguiar.course.instagram.profile.view
+package co.tiagoaguiar.course.instagram.home.view
 
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.tiagoaguiar.course.instagram.R
+import co.tiagoaguiar.course.instagram.databinding.FragmentHomeBinding
+import co.tiagoaguiar.course.instagram.databinding.ItemPostListBinding
 
-class ProfileFragment: Fragment() {
+class HomeFragment: Fragment() {
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) { // Disparado depois que a view é criada.
         super.onViewCreated(view, savedInstanceState) // As referências dos elementos fica armazenada no parametro view.
 
-        val rv = view.findViewById<RecyclerView>(R.id.profile_rv)
-        rv.layoutManager = GridLayoutManager(requireContext(), 3)
+        val rv = view.findViewById<RecyclerView>(R.id.home_rv)
+        rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = PostAdapter()
     }
 
@@ -35,8 +40,7 @@ class ProfileFragment: Fragment() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder { // Criação do layout do item.
             val inflater: LayoutInflater = LayoutInflater.from(parent.context)
-            val itemView: View = inflater.inflate(R.layout.item_profile_grid, parent, false)
-
+            val itemView: View = inflater.inflate(R.layout.item_post_list, parent, false)
             return PostViewHolder(itemView)
         }
 
@@ -46,12 +50,12 @@ class ProfileFragment: Fragment() {
         }
 
         override fun getItemCount(): Int { // Quantidade de itens.
-            return 30
+            return 10
         }
 
         private class PostViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
             fun getImageView(): ImageView {
-                return itemView.findViewById<ImageView>(R.id.item_profile_image_grid)
+                return itemView.findViewById<ImageView>(R.id.home_img_post)
             }
         }
     }

@@ -18,24 +18,34 @@
             android:backgroundTint="@color/white">
 
             <androidx.appcompat.widget.Toolbar
+                android:id="@+id/main_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="?attr/actionBarSize"
                 app:layout_scrollFlags="scroll|enterAlways"
-                app:title="@string/app_name" />
+                app:menu="@menu/menu_profile">
+
+
+                <ImageView
+                    android:src="@drawable/instagram_logo_black"
+                    android:layout_width="100dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="8dp"
+                    android:layout_height="wrap_content" />
+
+            </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <fragment
             android:id="@+id/main_fragment"
-            android:name="co.tiagoaguiar.course.instagram.profile.view.ProfileFragment"
+            android:name="co.tiagoaguiar.course.instagram.home.view.HomeFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             app:layout_constraintBottom_toTopOf="@+id/main_bottom_nav"
-            tools:layout="@layout/fragment_profile" />
+            tools:layout="@layout/fragment_home" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_bottom_nav"
@@ -44,8 +54,6 @@
         app:itemIconTint="@color/black"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
