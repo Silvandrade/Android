@@ -1,0 +1,89 @@
+@startuml
+!define LIGHTORANGE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+'https://plantuml.com/class-diagram
+
+package MODEL {
+
+    class LoginRepository {
+        + LoginDataSource
+        + login(email, password, Callback) as lg
+        LoginDataSource.login(email, password, Callback) as LDSlg
+    }
+
+    class FakeDataSource implements LoginDataSource {
+        override login(email, password, Callback) as lg
+        Callback.onSuccess as CS
+    }
+
+    interface LoginDataSource #aliceblue ##[dotted]blue {
+        + login(email, password, Callback:)
+    }
+
+}
+
+LoginRepository::LDSlg --> FakeDataSource::lg : 03 >
+
+package PRESENTER {
+
+    class LoginPresenter implements Presenter {
+        + var View
+        + var Repository
+        object Callback{}
+
+        override onSuccess() as oS
+        override login(email, password) as lg
+        Repository.login(email, password, Callback) as Rlg
+    }
+
+    together {
+
+        interface Callback #aliceblue ##[dotted]blue {
+            + onSuccess()
+            + onFailure()
+            + onComplete()
+        }
+
+        interface Presenter #aliceblue ##[dotted]blue {
+            + login(email, password)
+        }
+    }
+    Callback -[hidden] Presenter
+
+}
+
+LoginPresenter::object .[#blue].|> Callback : <b><color:royalBlue>Objeto Anônimo</color></b>
+LoginPresenter::Rlg -> LoginRepository::lg : 02 >
+
+package VIEW {
+
+    class LoginActivity implements View {
+        Presenter =  LoginPresenter(this, DependencyInjector) as Pr
+        Presenter.login(email, password) as Plg
+        onUserAuthenticated()
+    }
+
+    interface View #aliceblue ##[dotted]blue {
+        + showProgress(enabled: Boolean)
+        + displayEmailFailure(emailError: Int?)
+        + displayPasswordFailure(passwordError: Int?)
+        + onUserAuthenticated()
+        + onUserUnauthorized(message: String)
+    }
+}
+
+LoginActivity::Pr -> DependencyInjector
+LoginActivity -[hidden]left-> DependencyInjector
+LoginActivity::onUserAuthenticated <-[#green]- LoginPresenter::oS : 05 <
+LoginActivity::Plg --> LoginPresenter::lg : 01 >
+
+FakeDataSource::CS -[#green]-> LoginPresenter::oS : 04 >
+
+VIEW -[hidden]up-> PRESENTER
+PRESENTER -[hidden]up-> MODEL
+
+class DependencyInjector <<  (O,#FF7700) Object  >> #pink ##[bold]red {
+    return LoginRepository(FakeDataSource())
+}
+
+@enduml

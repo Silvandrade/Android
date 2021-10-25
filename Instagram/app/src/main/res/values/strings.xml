@@ -42,4 +42,6 @@
     <string name="logout">Deseja sair?</string>
     <string name="logout_action">Sair</string>
     <string name="cancel">Cancel</string>
+    <string name="invalid_password">A senha deve conter no mínimo 8 caracteres</string>
+    <string name="invalid_name">O nome dever conter pelo menos 3 caracteres.</string>
 </resources>

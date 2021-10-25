@@ -1,0 +1,119 @@
+@startuml
+!define LIGHTORANGE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+package android {
+
+    class FrameLayout {}
+    class AppCompatActivity {}
+
+    package common {
+        package base {
+            interface BasePresenter #aliceblue ##[dotted]blue {
+                + onDestroy()
+            }
+
+            interface "BaseView<T> " as BaseView #aliceblue ##[dotted]blue {
+             + val presenter: T
+            }
+        }
+    }
+
+    package Login {
+
+        package data {
+
+            class FakeDataSource implements LoginDataSource {
+                + login(email: String, password: String, callback: LoginCallback)
+            }
+
+            FakeDataSource::login .. LoginCallback
+
+            interface LoginCallback #aliceblue ##[dotted]blue {
+                + onSuccess()
+                + onFailure(message: String)
+                + onComplete()
+            }
+
+            interface LoginDataSource #aliceblue ##[dotted]blue {
+                + login(email: String, password: String, callback: LoginCallback)
+            }
+
+            class LoginRepository {
+                - val dataSource: LoginDataSource
+                + login(email: String, password: String, callback: LoginCallback)
+            }
+
+            LoginRepository::dataSource .. LoginDataSource
+        }
+
+        package presenter {
+
+            class LoginPresenter implements Login.Presenter {
+                - var view: Login.View?
+                - var repository: LoginRepository
+                + login(email: String, password: String)
+                + onDestroy()
+            }
+
+            LoginPresenter::view .. Login.View
+            LoginPresenter::repository -- LoginRepository
+            LoginPresenter::email .. LoginCallback
+
+            note "2 - Presenter valida os dados e\ne repassa ao Model." as N2
+            LoginPresenter::email -- N2
+            N2 -- LoginRepository::email
+        }
+
+        interface Login.Presenter #aliceblue ##[dotted]blue extends BasePresenter {
+            + login(email: String, password: String)
+        }
+
+        interface Login.View #aliceblue ##[dotted]blue extends BaseView {
+            + showProgress(enabled: Boolean)
+            + displayEmailFailure(emailError: Int?)
+            + displayPasswordFailure(passwordError: Int?)
+            + onUserAuthenticated()
+            + onUserUnauthorized()
+        }
+
+        package view {
+
+            class LoadingButton extends FrameLayout {
+                - var button: Button
+                - var progress: ProgressBar
+                - var text: String
+
+                + constructor(context: Context, attrs: AttributeSet?): super(constext, attrs)
+                - setup(context: Context, attrs: AttributeSet?)
+                + setEnabled(enabled: Boolean)
+                + setOnClickListener(l: OnClickListener?)
+                + showProgress(enabled: Boolean)
+            }
+
+            class LoginActivity extends AppCompatActivity implements Login.View {
+                - lateinit var binding: ActivityLoginBinding
+                + lateinit var presenter: Login.Presenter
+                - val watcher = CustomTextWatcher
+
+                + onCreate(savedInstanceState: Bundle?)
+                + showProgress(enabled: Boolean)
+                + displayEmailFailure(emailError: Int?)
+                + displayPasswordFailure(passwordError: Int?)
+                + onUserAuthenticated()
+                + onUserUnauthorized()
+                + onDestroy()
+                - closeKeyboard(activity: LoginActivity)
+                - fieldsIsFilled() : Boolean
+            }
+
+            LoginActivity::presenter .. Login.Presenter
+
+            note "1 - Ao clicar no botão entrar a View\npassa os parametro (e-mail e senha)\npara o login Presenter." as N1
+            LoginActivity::onCreate -- N1
+            N1 -- LoginPresenter::email
+        }
+    }
+}
+
+@enduml

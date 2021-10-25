@@ -11,4 +11,8 @@ class RegisterWelcomeFragment: Fragment() {
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_register_welcome, container, false)
     }
+
+    companion object {
+        const val KEY_NAME = "key_name"
+    }
 }

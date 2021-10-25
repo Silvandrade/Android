@@ -1,22 +1,25 @@
 package co.tiagoaguiar.course.instagram.login.view
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import co.tiagoaguiar.course.instagram.R
+import android.widget.Toast
+import co.tiagoaguiar.course.instagram.common.base.DependencyInjector
+import co.tiagoaguiar.course.instagram.common.util.CustomTextWatcher
 import co.tiagoaguiar.course.instagram.databinding.ActivityLoginBinding
-import com.google.android.material.textfield.TextInputLayout
+import co.tiagoaguiar.course.instagram.login.Login
+import co.tiagoaguiar.course.instagram.login.presenter.LoginPresenter
+import co.tiagoaguiar.course.instagram.main.view.MainActivity
+import co.tiagoaguiar.course.instagram.register.view.RegisterActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), Login.View {
 
   private lateinit var binding: ActivityLoginBinding
+  override lateinit var presenter: Login.Presenter
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -24,43 +27,74 @@ class LoginActivity : AppCompatActivity() {
     binding = ActivityLoginBinding.inflate(layoutInflater)
     setContentView(binding.root)
 
-    val buttonEnter = binding.loginBtnEnter
+    presenter = LoginPresenter(this, DependencyInjector.loginRepository())
 
     with(binding) {
-      loginEditEmail.addTextChangedListener(watcher) // Evento de escuta de alteração de texto.
+      // Evento de escuta de alteração de texto.
+      loginEditEmail.addTextChangedListener(watcher)
+      loginEditEmail.addTextChangedListener(CustomTextWatcher {
+        displayEmailFailure(null)
+      })
+
       loginEditPassword.addTextChangedListener(watcher)
+      loginEditPassword.addTextChangedListener(CustomTextWatcher {
+        displayPasswordFailure(null)
+      })
 
-      // Objeto anônimo que implementa uma interface, quando o botão é clicado é acionado o metodo Listener do LoadingButton que é um FrameLayout por extensão.
       loginBtnEnter.setOnClickListener{
-        closeKeyboard(LoginActivity())
-        buttonEnter.showProgress(true);
+        closeKeyboard(this@LoginActivity)
+        presenter.login(loginEditEmail.text.toString(), loginEditPassword.text.toString())
+      }
 
-        loginEditEmailInput.error = "Esse e-mail é inválido."
-        loginEditPasswordInput.error = "Senha inválida."
-
-        Handler(Looper.getMainLooper()).postDelayed({ // Método para simular um atraso de 2 segundo.
-          loginBtnEnter.showProgress(false)
-        }, 2000)
+      loginTxtRegister.setOnClickListener{
+        goToRegisterScreen()
       }
     }
   }
 
-  private val watcher = object : TextWatcher { // Objeto anônimo que implementa uma interface.
-    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-    }
-
-    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { // Toda vez que o texto for alterado.
-      binding.loginBtnEnter.isEnabled = s.toString().isNotEmpty() // Retorna um boolean de edição de texto do campo e-mail.
-    }
-
-    override fun afterTextChanged(s: Editable?) {
-    }
-
+  private val watcher = CustomTextWatcher {
+    binding.loginBtnEnter.isEnabled = fieldsIsFilled()
   }
 
-  private fun closeKeyboard(activity: LoginActivity) {
+  override fun showProgress(enabled: Boolean) {
+    binding.loginBtnEnter.showProgress(enabled)
+  }
+
+  override fun displayEmailFailure(emailError: Int?) {
+    binding.loginEditEmailInput.error = emailError?.let { getString(it) }
+  }
+
+  override fun displayPasswordFailure(passwordError: Int?) {
+    binding.loginEditPasswordInput.error = passwordError?.let { getString(it) }
+  }
+
+  override fun onUserAuthenticated() {
+    val intent = Intent(this, MainActivity::class.java)
+    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+    startActivity(intent)
+  }
+
+  override fun onUserUnauthorized(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+  }
+
+  override fun onDestroy() {
+    presenter.onDestroy()
+    super.onDestroy()
+  }
+
+  private fun closeKeyboard(activity: Activity) {
     val inputMethodManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     val view: View? = activity.currentFocus
     inputMethodManager.hideSoftInputFromWindow(view?.windowToken, 0)
+  }
+
+  private fun fieldsIsFilled() : Boolean {
+    return binding.loginEditEmail.text.toString().isNotEmpty()
+            && binding.loginEditPassword.text.toString().isNotEmpty()
+  }
+
+  private fun goToRegisterScreen() {
+    startActivity(Intent(this, RegisterActivity::class.java))
   }
 }
