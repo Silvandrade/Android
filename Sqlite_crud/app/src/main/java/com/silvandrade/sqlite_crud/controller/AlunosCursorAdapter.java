@@ -9,16 +9,16 @@ import android.widget.CursorAdapter;
 import android.widget.TextView;
 import com.silvandrade.sqlite_crud.R;
 
-public class AlumnosCursorAdapter extends CursorAdapter {
+public class AlunosCursorAdapter extends CursorAdapter {
 
-    public AlumnosCursorAdapter(Context context, Cursor c, int flags) {
+    public AlunosCursorAdapter(Context context, Cursor c, int flags) {
         super(context, c, 0);
     }
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        return inflater.inflate(R.layout.list_item_alumno, parent, false);
+        return inflater.inflate(R.layout.list_item_aluno, parent, false);
     }
 
     @Override
@@ -34,12 +34,12 @@ public class AlumnosCursorAdapter extends CursorAdapter {
 
 
         // Recupernado dados do banco.
-        String id = cursor.getString((int) cursor.getColumnIndex("ID"));
-        String name = cursor.getString((int) cursor.getColumnIndex("NOMBRE"));
-        String lastName = cursor.getString((int) cursor.getColumnIndex("APELLIDO"));
-        String degree = cursor.getString((int) cursor.getColumnIndex("GRADO"));
-        String group = cursor.getString((int) cursor.getColumnIndex("GRUPO"));
-        String turn = cursor.getString((int) cursor.getColumnIndex("TURNO"));
+        String id = cursor.getString(1);
+        String name = cursor.getString(2);
+        String lastName = cursor.getString(3);
+        String degree = cursor.getString(4);
+        String group = cursor.getString(5);
+        String turn = cursor.getString(6);
 
         // Repassando os dados para a interface gráfica.
         textViewId.setText(id);

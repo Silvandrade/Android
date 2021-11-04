@@ -37,65 +37,65 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_view_insert_apellido"
+        app:layout_constraintStart_toEndOf="@+id/text_view_insert_sobrenome"
         app:layout_constraintTop_toTopOf="@+id/text_view_insert_id" />
 
     <TextView
-        android:id="@+id/text_view_insert_nombre"
+        android:id="@+id/text_view_insert_nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:text="NOMBRE:"
+        android:text="NOME:"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_insert_id" />
 
     <EditText
-        android:id="@+id/edit_text_view_insert_nombre"
+        android:id="@+id/edit_text_view_insert_nome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:autofillHints="null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_view_insert_apellido"
+        app:layout_constraintStart_toEndOf="@+id/text_view_insert_sobrenome"
         app:layout_constraintTop_toBottomOf="@id/text_view_insert_id"
         tools:ignore="TextFields" />
 
     <TextView
-        android:id="@+id/text_view_insert_apellido"
+        android:id="@+id/text_view_insert_sobrenome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:text="APELLIDO:"
+        android:text="SOBRENOME:"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_insert_nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_insert_nome" />
 
     <EditText
-        android:id="@+id/edit_text_view_insert_apellido"
+        android:id="@+id/edit_text_view_insert_sobrenome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_view_insert_apellido"
-        app:layout_constraintTop_toBottomOf="@id/text_view_insert_nombre" />
+        app:layout_constraintStart_toEndOf="@+id/text_view_insert_sobrenome"
+        app:layout_constraintTop_toBottomOf="@id/text_view_insert_nome" />
 
     <TextView
-        android:id="@+id/text_view_insert_grado"
+        android:id="@+id/text_view_insert_grade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:text="GRADO:"
+        android:text="GRADE:"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_insert_apellido" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_insert_sobrenome" />
 
     <EditText
-        android:id="@+id/edit_text_view_insert_grado"
+        android:id="@+id/edit_text_view_insert_grade"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_view_insert_apellido"
-        app:layout_constraintTop_toBottomOf="@id/text_view_insert_apellido" />
+        app:layout_constraintStart_toEndOf="@+id/text_view_insert_sobrenome"
+        app:layout_constraintTop_toBottomOf="@id/text_view_insert_sobrenome" />
 
     <TextView
         android:id="@+id/text_view_insert_grupo"
@@ -105,15 +105,15 @@
         android:text="GRUPO:"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_insert_grado" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_insert_grade" />
 
     <EditText
         android:id="@+id/edit_text_view_insert_grupo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_view_insert_apellido"
-        app:layout_constraintTop_toBottomOf="@id/text_view_insert_grado" />
+        app:layout_constraintStart_toEndOf="@+id/text_view_insert_sobrenome"
+        app:layout_constraintTop_toBottomOf="@id/text_view_insert_grade" />
 
     <TextView
         android:id="@+id/text_view_insert_turno"
@@ -130,7 +130,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_view_insert_apellido"
+        app:layout_constraintStart_toEndOf="@+id/text_view_insert_sobrenome"
         app:layout_constraintTop_toBottomOf="@id/text_view_insert_grupo" />
 
     <Button

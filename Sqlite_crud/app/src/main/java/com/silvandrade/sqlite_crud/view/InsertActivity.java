@@ -6,10 +6,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.silvandrade.sqlite_crud.R;
 import com.silvandrade.sqlite_crud.database.AdminDB;
-import com.silvandrade.sqlite_crud.model.Alumno;
+import com.silvandrade.sqlite_crud.model.Aluno;
 
 public class InsertActivity extends AppCompatActivity {
 
@@ -28,9 +29,9 @@ public class InsertActivity extends AppCompatActivity {
 
         buttonInsert = (Button) findViewById(R.id.button_insert);
         editTextId = (EditText) findViewById(R.id.edit_text_view_insert_id);
-        editTextNombre = (EditText) findViewById(R.id.edit_text_view_insert_nombre);
-        editTextApellido = (EditText) findViewById(R.id.edit_text_view_insert_apellido);
-        editTextGrado = (EditText) findViewById(R.id.edit_text_view_insert_grado);
+        editTextNombre = (EditText) findViewById(R.id.edit_text_view_insert_nome);
+        editTextApellido = (EditText) findViewById(R.id.edit_text_view_insert_sobrenome);
+        editTextGrado = (EditText) findViewById(R.id.edit_text_view_insert_grade);
         editTextGrupo = (EditText) findViewById(R.id.edit_text_view_insert_grupo);
         editTextTurno = (EditText) findViewById(R.id.edit_text_view_insert_turno);
 
@@ -40,7 +41,7 @@ public class InsertActivity extends AppCompatActivity {
             SQLiteDatabase db = adminDB.getWritableDatabase();
 
             adminDB.insertAlumno(db,
-                new Alumno(
+                new Aluno(
                         editTextId.getText().toString(),
                         editTextNombre.getText().toString(),
                         editTextApellido.getText().toString(),
@@ -49,6 +50,8 @@ public class InsertActivity extends AppCompatActivity {
                         editTextTurno.getText().toString()
                 )
             );
+
+            Toast.makeText(this,"Registro salvo com sucesso!", Toast.LENGTH_LONG).show();
         });
     }
 }

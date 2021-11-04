@@ -20,19 +20,19 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NOMBRE:"
+            android:text="NOME:"
             android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="APELLIDO:"
+            android:text="SOBRENOME:"
             android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="GRADO:"
+            android:text="GRADE:"
             android:textSize="18sp" />
 
         <TextView
@@ -77,14 +77,14 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/text_view_item_group"
+            android:id="@+id/text_view_item_degree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="4dp"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/text_view_item_degree"
+            android:id="@+id/text_view_item_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="4dp"

@@ -25,7 +25,7 @@
             android:id="@+id/list_view_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/list_item_alumno" />
+            tools:listitem="@layout/list_item_aluno" />
 
     </LinearLayout>
 

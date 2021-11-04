@@ -2,14 +2,14 @@ package com.silvandrade.sqlite_crud.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.silvandrade.sqlite_crud.R;
-import com.silvandrade.sqlite_crud.controller.AlumnosCursorAdapter;
+import com.silvandrade.sqlite_crud.controller.AlunosCursorAdapter;
 import com.silvandrade.sqlite_crud.database.AdminDB;
 
 public class DeleteActivity extends AppCompatActivity {
@@ -29,12 +29,14 @@ public class DeleteActivity extends AppCompatActivity {
 
 
         AdminDB adminDB = new AdminDB(getApplicationContext());
-        AlumnosCursorAdapter adapter = new AlumnosCursorAdapter(getApplicationContext(), adminDB.getAllAlumnos(), 0);
+        AlunosCursorAdapter adapter = new AlunosCursorAdapter(getApplicationContext(), adminDB.getAllAlumnos(), 0);
         listViewDelete.setAdapter(adapter);
 
         buttonDelete.setOnClickListener(v -> {
             adminDB.deleteAlumno(editTextDelete.getText().toString());
-            adapter.notifyDataSetChanged();
+            AlunosCursorAdapter newAdapter = new AlunosCursorAdapter(getApplicationContext(), adminDB.getAllAlumnos(), 0);
+            listViewDelete.setAdapter(newAdapter);
+            Toast.makeText(this, "Registro deletado com sucesso!", Toast.LENGTH_LONG).show();
         });
     }
 }

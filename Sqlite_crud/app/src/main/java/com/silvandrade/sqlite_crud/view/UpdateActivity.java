@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.silvandrade.sqlite_crud.R;
 import com.silvandrade.sqlite_crud.database.AdminDB;
@@ -26,9 +27,9 @@ public class UpdateActivity extends AppCompatActivity {
 
         buttonUpdate = (Button) findViewById(R.id.button_update);
         editTextId = (EditText) findViewById(R.id.edit_text_view_update_id);
-        editTextNombre = (EditText) findViewById(R.id.edit_text_view_update_nombre);
-        editTextApellido = (EditText) findViewById(R.id.edit_text_view_update_apellido);
-        editTextGrado = (EditText) findViewById(R.id.edit_text_view_update_grado);
+        editTextNombre = (EditText) findViewById(R.id.edit_text_view_update_nome);
+        editTextApellido = (EditText) findViewById(R.id.edit_text_view_update_sobrenome);
+        editTextGrado = (EditText) findViewById(R.id.edit_text_view_update_grade);
         editTextGrupo = (EditText) findViewById(R.id.edit_text_view_update_grupo);
         editTextTurno = (EditText) findViewById(R.id.edit_text_view_update_turno);
 
@@ -43,6 +44,8 @@ public class UpdateActivity extends AppCompatActivity {
                     editTextGrupo.getText().toString(),
                     editTextTurno.getText().toString()
             );
+
+            Toast.makeText(this, "Registro atualizado com sucesso!", Toast.LENGTH_LONG).show();
         });
     }
 }

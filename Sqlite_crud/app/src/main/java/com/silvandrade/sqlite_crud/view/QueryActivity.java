@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.silvandrade.sqlite_crud.R;
-import com.silvandrade.sqlite_crud.controller.AlumnosCursorAdapter;
+import com.silvandrade.sqlite_crud.controller.AlunosCursorAdapter;
 import com.silvandrade.sqlite_crud.database.AdminDB;
 
 public class QueryActivity extends AppCompatActivity {
@@ -27,11 +27,11 @@ public class QueryActivity extends AppCompatActivity {
         buttonQuery = (Button) findViewById(R.id.button_query_alumno);
 
         AdminDB adminDB = new AdminDB(getApplicationContext());
-        AlumnosCursorAdapter adapterAlumnos = new AlumnosCursorAdapter(QueryActivity.this, adminDB.getAllAlumnos(), 0);
+        AlunosCursorAdapter adapterAlumnos = new AlunosCursorAdapter(QueryActivity.this, adminDB.getAllAlumnos(), 0);
         listViewQuery.setAdapter(adapterAlumnos);
 
         buttonQuery.setOnClickListener(v -> {
-            listViewQuery.setAdapter(new AlumnosCursorAdapter(
+            listViewQuery.setAdapter(new AlunosCursorAdapter(
                     QueryActivity.this,
                     adminDB.getAlumnoById(editTextQuery.getText().toString()),
                     0));
