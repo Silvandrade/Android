@@ -1,0 +1,8 @@
+com/silvandrade/curriculoeleitoral/BuildConfig.java
+ com.silvandrade.curriculoeleitoral.BuildConfig
+com/silvandrade/curriculoeleitoral/databinding/ActivityMainBinding.java
+ com.silvandrade.curriculoeleitoral.databinding.ActivityMainBinding
+com/silvandrade/curriculoeleitoral/databinding/CategoryPoliticalItemBinding.java
+ com.silvandrade.curriculoeleitoral.databinding.CategoryPoliticalItemBinding
+com/silvandrade/curriculoeleitoral/databinding/PhotoItemBinding.java
+ com.silvandrade.curriculoeleitoral.databinding.PhotoItemBinding

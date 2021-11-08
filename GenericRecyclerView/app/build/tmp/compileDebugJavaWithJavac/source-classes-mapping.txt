@@ -1,0 +1,2 @@
+com/silvandrade/genericrecyclerview/BuildConfig.java
+ com.silvandrade.genericrecyclerview.BuildConfig
