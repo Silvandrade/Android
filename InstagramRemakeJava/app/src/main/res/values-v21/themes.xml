@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+    <style name="Theme.InstagramRemakeJava" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/gray</item>
+        <item name="colorPrimaryDark">@color/grayDarker</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="android:buttonStyle">@style/NoShadowButton</item>
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+
+    <style name="NoShadowButton" parent="android:Widget.Button">
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+</resources>

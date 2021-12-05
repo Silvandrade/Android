@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">InstagramRemakeJava</string>
+    <string name="email">Email</string>
+    <string name="password">Senha</string>
+    <string name="enter">Entrar</string>
+    <string name="or">OU</string>
+    <string name="enter_with_facebook">Entrar com facebook</string>
+    <string name="does_not_have_account">Não tem uma conta? <b><font color="#000000">Cadastre-se.</font></b></string>
+    <string name="next">Avançar</string>
+    <string name="name">Nome</string>
+    <string name="continuee">Continuar</string>
+    <string name="welcome_to_instagram">Bem-vindo ao Instagram, \n%1$s Encontre pessoas para seguir e comece a compartilhar fotos. Você pode alterar seu nome de usuário a qualquer momento.</string>
+    <string name="agree_terms_policy">Ao clicar em avançar, você concorda com nossos Termos, Política de Dados e Politica de Cookies.</string>
+    <string name="photo_register_title">Adicionar foto do perfil</string>
+    <string name="photo_register_subtitle">Adicione uma foto do perfil para que seus amigos saibam que é você.</string>
+    <string name="jump">Pular</string>
+    <string name="difine_photo_profile">Definir uma foto do perfil</string>
+    <string name="take_picture">Quero tirar foto</string>
+    <string name="define_photo_profile">Definir foto</string>
+    <string name="search_gallery">Pesquisar na Biblioteca</string>
+    <string name="home">Home</string>
+    <string name="search">Pesquisar</string>
+    <string name="add_photo">Adicionar foto</string>
+    <string name="favorite">Favorito</string>
+    <string name="profile">Perfil</string>
+    <string name="followers">Seguidores</string>
+    <string name="following">Seguindo</string>
+    <string name="post">Publicações</string>
+    <string name="edit_profile">Editar perfil</string>
+    <string name="username">username</string>
+</resources>
