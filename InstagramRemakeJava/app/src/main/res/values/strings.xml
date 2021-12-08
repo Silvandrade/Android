@@ -28,4 +28,9 @@
     <string name="post">Publicações</string>
     <string name="edit_profile">Editar perfil</string>
     <string name="username">username</string>
+    <string name="invalid_email">Email inválido.</string>
+    <string name="have_account">Já possui uma conta? <b><font color="#000000">Faça login.</font></b></string>
+    <string name="invalid_Email">Email inválido.</string>
+    <string name="password_not_equal">As senhas digitadas são diferentes.</string>
+    <string name="confrm_password">Repetir Senha</string>
 </resources>

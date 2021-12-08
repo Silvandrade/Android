@@ -1,83 +1,142 @@
 package com.silvandrade.instagramremakejava.login.presentation;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.silvandrade.instagramremakejava.R;
+import com.silvandrade.instagramremakejava.common.view.AbstractActivity;
 import com.silvandrade.instagramremakejava.common.view.CustomButton;
+import com.silvandrade.instagramremakejava.databinding.ActivityLoginBinding;
+import com.silvandrade.instagramremakejava.login.datasource.LoginDataSource;
+import com.silvandrade.instagramremakejava.login.datasource.LoginLocalDataSource;
+import com.silvandrade.instagramremakejava.main.presentation.MainActivity;
+import com.silvandrade.instagramremakejava.register.presentation.RegisterActivity;
 
-public class LoginActivity extends AppCompatActivity {
 
-    CustomButton buttonEnter;
+public class LoginActivity extends AbstractActivity implements LoginView, TextWatcher {
+
+    private ActivityLoginBinding binding;
+    private CustomButton buttonEnter;
+    private EditText textEmail;
+    private EditText textPassword;
+    private TextInputLayout textLayoutEmail;
+    private TextInputLayout textLayoutPassword;
+    private TextView textViewRegister;
+
+    private LoginPresenter loginPresenter;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
-        final Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.black));
+        setStatusBarDark();
+        bindLayoutComponents();
+        setOnClickListenerComponents();
 
+        textEmail.addTextChangedListener(this);
+        textPassword.addTextChangedListener(this);
+    }
 
-        EditText editTextEmail = findViewById(R.id.login_edit_text_email);
-        EditText editTextPassword = findViewById(R.id.login_edit_text_password);
+    private void bindLayoutComponents() {
+        textEmail = binding.loginEditTextEmail;
+        textPassword = binding.loginEditTextPassword;
+        textLayoutEmail = binding.loginEditTextInputEmail;
+        textLayoutPassword = binding.loginEditTextInputPassword;
 
-        editTextEmail.addTextChangedListener(watcher);
-        editTextPassword.addTextChangedListener(watcher);
+        buttonEnter = binding.loginButtonEnter;
+        textViewRegister = binding.loginTextViewRegister;
+    }
 
-        buttonEnter = findViewById(R.id.login_button_enter);
-
+    private void setOnClickListenerComponents() {
         buttonEnter.setOnClickListener(v -> {
-            buttonEnter.showProgress(true);
+            loginPresenter.login(textEmail.getText().toString(), textPassword.getText().toString());
+        });
 
-            new Handler().postDelayed(() -> {
-                buttonEnter.showProgress(false);
-            }, 4000);
-
-            TextInputLayout textInputLayoutEmail = findViewById(R.id.login_edit_text_input_email);
-            textInputLayoutEmail.setError("E-mail não cadastrado.");
-
-            editTextEmail.setBackground(ContextCompat.getDrawable(this, R.drawable.edit_text_error));
-
-            TextInputLayout textInputLayoutPassword = findViewById(R.id.login_edit_text_input_password);
-            textInputLayoutPassword.setError("Senha incorreta.");
-
-            editTextPassword.setBackground(ContextCompat.getDrawable(this, R.drawable.edit_text_error));
+        textViewRegister.setOnClickListener(v -> {
+            RegisterActivity.launch(this);
         });
     }
 
-    private TextWatcher watcher = new TextWatcher() {
+    @Override
+    protected View getView() {
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        return view;
+    }
 
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    @Override
+    protected void onInject() {
+        LoginDataSource dataSource = new LoginLocalDataSource();
+        loginPresenter = new LoginPresenter(this, dataSource);
+    }
 
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        buttonEnter.setEnabled(!editTextIsEmpty(textEmail, textPassword));
+
+        if (s.hashCode() == textEmail.getText().hashCode()) {
+            textLayoutEmail.setErrorEnabled(false);
+            textEmail.setBackground(findDrawable(R.drawable.edit_text_background));
+        } else if (s.hashCode() == textPassword.getText().hashCode()) {
+            textLayoutPassword.setErrorEnabled(false);
+            textPassword.setBackground(findDrawable(R.drawable.edit_text_background));
+        }
+    }
+
+    public Boolean editTextIsEmpty(EditText... editTexts) {
+        Boolean empty = false;
+
+        for (EditText editText : editTexts) {
+            empty = empty || editText.getText().toString().isEmpty();
         }
 
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if(!s.toString().isEmpty()) {
-                buttonEnter.setEnabled(true);
-            } else {
-                buttonEnter.setEnabled(false);
-            }
+        return empty;
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+
+    @Override
+    public void onFailureForm(String emailError, String passwordError) {
+        if (emailError != null) {
+            textLayoutEmail.setError(emailError);
+            textEmail.setBackground(findDrawable(R.drawable.edit_text_error));
         }
 
-        @Override
-        public void afterTextChanged(Editable s) {
-
+        if (passwordError != null) {
+            textLayoutPassword.setError(passwordError);
+            textPassword.setBackground(findDrawable(R.drawable.edit_text_error));
         }
-    };
+    }
+
+    @Override
+    public void onUserLogged() {
+        MainActivity.launch(this);
+    }
+
+    @Override
+    public void showProgressBar() {
+        buttonEnter.showProgress(true);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        buttonEnter.showProgress(false);
+    }
 }

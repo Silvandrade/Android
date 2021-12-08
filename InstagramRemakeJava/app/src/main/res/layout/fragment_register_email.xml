@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".register.presentation.RegisterActivity"
-    tools:showIn="@layout/activity_register">
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
@@ -44,11 +41,11 @@
         android:background="@color/grayBorder" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/register_text_view_register"
+        android:id="@+id/register_text_view_email_login"
         style="@style/InstaTextViewBase"
         android:layout_width="match_parent"
         android:gravity="center"
         android:padding="24dp"
-        android:text="@string/does_not_have_account" />
+        android:text="@string/have_account" />
 
 </LinearLayout>

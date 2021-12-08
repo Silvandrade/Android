@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".register.presentation.RegisterActivity"
-    tools:showIn="@layout/activity_register">
+    tools:context=".register.presentation.RegisterActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
@@ -32,5 +31,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:text="@string/next" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/register_button_jump"
+        style="@style/InstaFormButton.Link"
+        android:layout_gravity="center"
+        android:layout_marginBottom="36dp"
+        android:text="@string/jump" />
 
 </LinearLayout>

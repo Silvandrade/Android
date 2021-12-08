@@ -18,20 +18,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <fragment
+            <FrameLayout
                 android:id="@+id/register_fragment"
-                android:name="com.silvandrade.instagramremakejava.register.presentation.RegisterPhotoFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                tools:layout="@layout/fragment_register_photo" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/register_button_jump"
-                style="@style/InstaFormButton.Link"
-                android:layout_gravity="center"
-                android:layout_marginBottom="36dp"
-                android:text="@string/jump" />
+                tools:layout="@layout/fragment_register_email" />
 
         </LinearLayout>
 

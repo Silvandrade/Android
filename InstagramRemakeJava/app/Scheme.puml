@@ -1,0 +1,110 @@
+@startuml
+
+package app {
+
+    package login #DDDDDD {
+
+        package presentation #DDDDFF {
+
+            class LoginActivity implements LoginView {
+                - CustomButton buttonEnter
+                - LoginPresenter loginPresenter
+                # void onCreate(Bundle savedInstanceState)
+                # void onInject()
+                + void onFailureForm(String emailError, String passwordError)
+                + void onUserLogged()
+            }
+
+            note left of LoginActivity : Ao criar a Activity o metodo onInject cria um objeto\nLoginDataSource e utiliza para instanciar a variável\nloginPresenter.
+            LoginActivity::onInject -[#black]-> LoginLocalDataSource : 0 - instancia o MODEL >
+            LoginActivity::onInject -[#black]-> LoginPresenter : 1 - passa a VIEW e o MODEL >
+            LoginActivity::buttonEnter -[#black]-> LoginPresenter::login : 2 - ao clicar >
+
+            class LoginPresenter implements presenter {
+                - LoginView view
+                - LoginDataSource dataSource
+                + LoginPresenter(LoginView view, LoginDataSource dataSource)
+                + login(String email, String password)
+                + void onSuccess(UserAuth userAuth)
+                + void onError(String message)
+                + void onComplete()
+            }
+
+            LoginPresenter::view -[#red]-> LoginActivity::onFailureForm : 3 - VIEW error >
+            LoginPresenter::dataSource -[#green]-> LoginLocalDataSource::login : 3 - passa o PRESENTER >
+
+            interface LoginView {
+                + void onFailureForm(String emailError, String passwordError)
+                + void onUserLogged()
+            }
+        }
+
+        package datasource #DDFFFF {
+
+            interface LoginDataSource {
+                + void login(String email, String password, Presenter presenter)
+            }
+
+            class LoginLocalDataSource implements LoginDataSource {
+                + LoginLocalDataSource()
+                + void login(String email, String password, Presenter presenter)
+            }
+        }
+    }
+
+    package common #DDDDDD {
+
+        package model #DDDDFF {
+            class Database {
+                - OnSuccessListener onSuccessListener
+                - OnFailureListener onFailureListener
+                - OnCompleteListener onCompleteListener
+                + Database getInstance()
+                + addOnSuccessListener(OnSuccessListener<T> listener)
+                + addOnFailureListener(OnFailureListener listener)
+                + addOnCompleteListener(OnCompleteListener listener)
+                + login(String email, String password)
+            }
+
+            Database::login <-[#black]- LoginLocalDataSource::login : 4 Database.login <
+            Database::login -[#green]-> Database.OnSuccessListener : 5 >
+            Database::login -[#red]-> Database.OnFailureListener : 5 >
+            Database::login -[#black]-> Database.OnCompleteListener : 6 >
+
+            interface Database.OnSuccessListener<T> {
+                + void onSuccess(T response)
+            }
+
+            Database.OnSuccessListener -[#green]-> LoginPresenter::onSuccess : 5.1 - PRESENTER.onSuccess >
+
+            interface Database.OnFailureListener {
+                + void onFailure(Exception e)
+            }
+
+            Database.OnFailureListener -[#red]-> LoginPresenter::onError : 5.1 - PRESENTER.onError >
+
+            interface Database.OnCompleteListener {
+                + void onComplete()
+            }
+
+            Database.OnCompleteListener -[#black]-> LoginPresenter::onComplete  : 6.1 - PRESENTER.onComplete >
+
+            class UserAuth {
+                - String email
+                - String password
+                + UserAuth(String email, String password)
+                + int hashCode()
+            }
+        }
+
+        package presenter #DDFFFF {
+            interface presenter {
+                void onSuccess(UserAuth userAuth)
+                void onError(String message)
+                void onComplete()
+            }
+        }
+    }
+}
+
+@enduml
